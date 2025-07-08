@@ -3,56 +3,100 @@ block content
   header 
     title Chick Request Form
     link(rel='stylesheet' href='styl/chicks.css')
-  h1 Welcome To Young4Chicks
-  p Please fill the form below to submit your chick request.
-  form
-    div
-      label(for='name') Full Name:
-      br
-      input#name(type='text' name='name' placeholder='John Doe' required='')
-      br
-      br
-    div
-      label(for='email') Email Address:
-      br
-      input#email(type='email' name='email' placeholder='john.doe@example.com' required='')
-      br
-      br
-    div
-      label(for='address') Address:
-      br
-      textarea#address(name='address' rows='3' placeholder='123 Farm Road, Rural City, Country' required='')
-      br
-      br
-    div
-      label(for='telephone') Telephone Number:
-      br
-      input#telephone(type='tel' name='telephone' placeholder='+1234567890' required='')
-      br
-      br
-    div
-      label(for='num_chicks') Number of Chicks (300-500):
-      br
-      input#num_chicks(type='number' name='num_chicks' min='300' max='500' value='300' required='')
-      br
-      br
-    div
-      label(for='nin_number') NIN Number:
-      br
-      input#nin_number(type='text' name='nin_number' placeholder='e.g., CM1234567890AB' required='')
-      br
-      br
-    div
-      label(for='request_date') Preferred Date:
-      br
-      input#request_date(type='date' name='request_date' required='')
-      br
-      br
-    div
-      label(for='comments') Additional Comments:
-      br
-      textarea#comments(name='comments' rows='4' placeholder='Any specific requests or details?')
-      br
-      br
-    div
-      button(type='submit') Submit Chick Request
+    h1 Welcome To Young4Chicks
+    p Please fill the form below to submit your chick request.
+    form#chickRequestForm
+      div
+        label(for="name") Full Name:
+        br
+        input#name(
+          required="" 
+          placeholder="John Doe" 
+          name="name" 
+          type="text"
+          )
+        br
+        br
+      div
+        label(for="email") Email Address:
+        br
+        input#email(
+          required="" 
+          placeholder="john.doe@example.com" 
+          name="email" 
+          type="email"
+          )
+        br
+        br
+      div
+        label(for="address") Address:
+        br
+        textarea#address(
+          required="" 
+          placeholder="123 Farm Road, Rural City, Country" 
+          rows="3" 
+          name="address"
+          )
+        br
+        br
+      div
+        label(for="telephone") Telephone Number:
+        br
+        input#telephone(
+          required="" 
+          placeholder="+1234567890" 
+          name="telephone" 
+          type="tel"
+          )
+        br
+        br
+      div
+        label(for="num_chicks") Number of Chicks (300-500):
+        br
+        input(
+          required="" 
+          value="300" 
+          max="500" 
+          min="300" 
+          name="num_chicks" 
+          id="num_chicks" 
+          type="number"
+          )
+        br
+        #totalPriceDisplay(style="margin-top: 5px; font-weight: bold;")
+        br
+      div
+        label(for="nin_number") NIN Number:
+        br
+        input(
+          required="" 
+          placeholder="e.g., CM1234567890AB" 
+          name="nin_number" 
+          id="nin_number" 
+          type="text"
+          )
+        br
+        br
+      div
+        label(for="request_date") Preferred Date:
+        br
+        input(
+          required="" 
+          name="request_date" 
+          id="request_date" 
+          type="date"
+          )
+        br
+        br
+      div
+        label(for="comments") Additional Comments:
+        br
+        textarea#comments(
+          placeholder="Any specific requests or details?" 
+          rows="4" 
+          name="comments"
+          )
+        br
+        br
+      div
+        button(type="submit") Submit Chick Request

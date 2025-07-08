@@ -1,8 +1,8 @@
-//1:  Dependencies
+//1a:  Dependencies
 const express = require("express");
 const path = require("path");
 
-// Importing Routes
+//1b: Importing Routes
 const studyRoutes = require("./routes/studyRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 const chicksRoutes = require("./routes/chicksRoutes");
