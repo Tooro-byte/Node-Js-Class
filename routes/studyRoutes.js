@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-res.send("Welcome To My Home Page.");
+  res.send("Welcome To My Home Page.");
 });
 
 //About Page Route

@@ -1,0 +1,18 @@
+extends layout 
+block content
+  header 
+   link(rel='stylesheet' href='/styl/farmers.css')  
+  .container
+    h2 Farmer Records
+    form.mb-8(onsubmit='event.preventDefault(); addFarmer();')
+      label(for='farmer-name') Farmer Name:
+      input#farmer-name.w-full(type='text' placeholder="Enter farmer's name" required='')
+      label(for='farmer-age') Age:
+      input#farmer-age.w-full(type='number' placeholder='Enter age' min='1' required='')
+      label(for='farmer-tel') Phone Number:
+      input#farmer-tel.w-full(type='text' placeholder='Enter phone number' required='')
+      label(for='farmer-address') Address:
+      input#farmer-address.w-full(type='text' placeholder='Enter address' required='')
+      button.w-full(type='submit') Add Farmer
+    #display-farmers.mt-6
+   

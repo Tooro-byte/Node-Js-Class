@@ -1,0 +1,58 @@
+extends layout 
+block content
+  header 
+    title Chick Request Form
+    link(rel='stylesheet' href='styl/chicks.css')
+  h1 Welcome To Young4Chicks
+  p Please fill the form below to submit your chick request.
+  form
+    div
+      label(for='name') Full Name:
+      br
+      input#name(type='text' name='name' placeholder='John Doe' required='')
+      br
+      br
+    div
+      label(for='email') Email Address:
+      br
+      input#email(type='email' name='email' placeholder='john.doe@example.com' required='')
+      br
+      br
+    div
+      label(for='address') Address:
+      br
+      textarea#address(name='address' rows='3' placeholder='123 Farm Road, Rural City, Country' required='')
+      br
+      br
+    div
+      label(for='telephone') Telephone Number:
+      br
+      input#telephone(type='tel' name='telephone' placeholder='+1234567890' required='')
+      br
+      br
+    div
+      label(for='num_chicks') Number of Chicks (300-500):
+      br
+      input#num_chicks(type='number' name='num_chicks' min='300' max='500' value='300' required='')
+      br
+      br
+    div
+      label(for='nin_number') NIN Number:
+      br
+      input#nin_number(type='text' name='nin_number' placeholder='e.g., CM1234567890AB' required='')
+      br
+      br
+    div
+      label(for='request_date') Preferred Date:
+      br
+      input#request_date(type='date' name='request_date' required='')
+      br
+      br
+    div
+      label(for='comments') Additional Comments:
+      br
+      textarea#comments(name='comments' rows='4' placeholder='Any specific requests or details?')
+      br
+      br
+    div
+      button(type='submit') Submit Chick Request

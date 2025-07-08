@@ -1,0 +1,54 @@
+extends layout 
+block content
+  header
+    title Sales Representative Registration
+    link(rel='stylesheet' href='/styl/sales.css')
+  h1 Welcome to the Sales Representative Page
+  p
+    | Please fill out the form below to register a new sales representative for
+    | Young4Chicks.
+  form
+    div
+      label(for='fullName') Full Name:
+      br
+      input#fullName(type='text' name='fullName' placeholder='Jane Doe' required='')
+      br
+      br
+    div
+      label(for='repEmail') Email Address:
+      br
+      input#repEmail(type='email' name='repEmail' placeholder='jane.doe@young4chicks.com' required='')
+      br
+      br
+    div
+      label(for='repPhone') Telephone Number:
+      br
+      input#repPhone(type='tel' name='repPhone' placeholder='+1234567890' required='')
+      br
+      br
+    div
+      label(for='repAddress') Address:
+      br
+      textarea#repAddress(name='repAddress' rows='3' placeholder='456 Business Park, City, Country' required='')
+      br
+      br
+    div
+      label(for='employeeId') Employee ID:
+      br
+      input#employeeId(type='text' name='employeeId' placeholder='YC-REP-001' required='')
+      br
+      br
+    div
+      label(for='password') Password:
+      br
+      input#password(type='password' name='password' placeholder='Enter a strong password' required='')
+      br
+      br
+    div
+      label(for='confirmPassword') Confirm Password:
+      br
+      input#confirmPassword(type='password' name='confirmPassword' placeholder='Re-enter password' required='')
+      br
+      br
+    div
+      button(type='submit') Register Sales Representative
