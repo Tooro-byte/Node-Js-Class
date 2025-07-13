@@ -1,107 +1,110 @@
- body {
-      font-family: 'Inter', sans-serif;
-      background-color: white; /* Lighter blue background */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .container {
-      background-color: honeydew;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 30px 6px 15px rgba(0, 0, 0, 0.15); /* More prominent shadow */
-      width: 100%;
-      max-width: 600px; /* Slightly wider container */
-    }
-    input[type="text"], input[type="number"] { /* Added number type */
-      padding: 12px 15px; /* Slightly larger padding for inputs */
-      border: 1px solid teal; /* Blue-ish border */
-      border-radius: 8px;
-      margin-bottom: 15px;
-      width: calc(100% - 30px); /* Account for padding */
-      font-size: 1rem;
-    }
-    button {
-      background-color: #00bcd4; /* Cyan button color */
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 12px;
-    }
-    button:hover {
-      animation: haydar 1.9s ease-in-out infinite;
-      background-color: teal; /* Darker cyan on hover */
-      transform: translateY(-1px); /* Slight lift effect */
-    }
-    @keyframes haydar{
-          0%{
-            background-color: blue;
-          }
-          10%{
-            background-color: #f9e505;
-          }
-          25%{
-            background-color: #c20d9d;
-          }
-          35%{
-            background-color: #004d40;
-          }
-          45%{
-            background-color: #ffffff;
-          }
-          55%{
-            background-color: red;
-          }
-          65%{
-            background-color: black;
-          }
-    }
-    button:active {
-      transform: translateY(0); /* Press effect */
-    }
-    .farmer-item {
-      display: flex;
-      flex-direction: column; /* Stack info vertically */
-      background-color: thistle; /* Very light blue for items */
-      padding: 15px 20px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      font-size: 1rem;
-      color: #263238; /* Darker text */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-      position: relative; /* For delete button positioning */
-    }
-    .farmer-item div {
-      margin-bottom: 5px; /* Space between details */
-    }
-    .farmer-item .detail-label {
-      font-weight: 600;
-      color: blue; /* Teal color for labels */
-    }
-    .farmer-item .delete-button {
-      background-color: #ef5350; /* Red for delete */
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      padding: 6px 12px;
-      font-size: 0.875rem;
-      box-shadow: none; /* No extra shadow for delete button */
-    }
-    .farmer-item .delete-button:hover {
-      background-color: #d32f2f; /* Darker red on hover */
-    }
-    h2 {
-      color: burlywood; /* Dark teal heading */
-      margin-bottom: 25px;
-      text-align: center;
-      font-size: 2.25rem; /* Larger heading */
-      font-weight: 800; /* Bolder heading */
-    }
+body {
+  font-family: "Inter", sans-serif;
+  background-color: white; /* Lighter blue background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.container {
+  margin-top: 55px;
+  background-color: honeydew;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 30px 6px 15px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+  width: 100%;
+  max-width: 600px; /* Slightly wider container */
+}
+input[type="text"],
+input[type="number"] {
+  /* Added number type */
+  padding: 12px 15px; /* Slightly larger padding for inputs */
+  border: 1px solid teal; /* Blue-ish border */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: calc(100% - 30px); /* Account for padding */
+  font-size: 1rem;
+}
+button {
+  background-color: #00bcd4; /* Cyan button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+}
+button:hover {
+  animation: haydar 1.9s ease-in-out infinite;
+  background-color: teal; /* Darker cyan on hover */
+  transform: translateY(-1px); /* Slight lift effect */
+}
+@keyframes haydar {
+  0% {
+    background-color: blue;
+  }
+  10% {
+    background-color: #f9e505;
+  }
+  25% {
+    background-color: #c20d9d;
+  }
+  35% {
+    background-color: #004d40;
+  }
+  45% {
+    background-color: #ffffff;
+  }
+  55% {
+    background-color: red;
+  }
+  65% {
+    background-color: black;
+  }
+}
+button:active {
+  transform: translateY(0); /* Press effect */
+}
+.farmer-item {
+  display: flex;
+  flex-direction: column; /* Stack info vertically */
+  background-color: thistle; /* Very light blue for items */
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #263238; /* Darker text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  position: relative; /* For delete button positioning */
+}
+.farmer-item div {
+  margin-bottom: 5px; /* Space between details */
+}
+.farmer-item .detail-label {
+  font-weight: 600;
+  color: blue; /* Teal color for labels */
+}
+.farmer-item .delete-button {
+  background-color: #ef5350; /* Red for delete */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  box-shadow: none; /* No extra shadow for delete button */
+}
+.farmer-item .delete-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+h2 {
+  color: burlywood; /* Dark teal heading */
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 2.25rem; /* Larger heading */
+  font-weight: 800; /* Bolder heading */
+}

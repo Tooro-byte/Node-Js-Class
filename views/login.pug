@@ -1,0 +1,39 @@
+extends layout
+block content
+  header 
+   link(rel='stylesheet' href='/styl/style.css')  
+  // The main container for the login form
+  .bg-white.p-8.rounded-lg.shadow-xl.w-full.max-w-md.mx-4
+    h2.text-3xl.font-bold.text-center.text-gray-800.mb-8 Young4Chicks Login Page!
+    form#loginForm(action='/login' method='POST')
+      .mb-6
+        label.block.text-gray-700.text-sm.font-semibold.mb-2(for='email') Email Address
+        // Added 'required' attribute to email input
+        input#email.w-full.px-4.py-3.border.border-gray-300.rounded-md.text-gray-800(type='email' name='email' placeholder='you@example.com' required class='focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent')
+      .mb-6.relative
+        label.block.text-gray-700.text-sm.font-semibold.mb-2(for='password') Password
+        // Ensure 'required' is present for password input
+        input#password.w-full.px-4.py-3.border.border-gray-300.rounded-md.text-gray-800.pr-10(type='password' name='password' placeholder='••••••••' required class='focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent')
+        span#togglePassword.password-toggle
+          // Eye icon for show/hide password
+          svg.h-5.w-5(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor')
+            path(d='M10 12a2 2 0 100-4 2 2 0 000 4z')
+            path(fill-rule='evenodd' d='M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z' clip-rule='evenodd')
+      .flex.items-center.justify-between.mb-6
+        .flex.items-center
+          input#remember_me.h-4.w-4.text-blue-600.rounded.border-gray-300(type='checkbox' name='remember_me' class='focus:ring-blue-500')
+          label.ml-2.block.text-sm.text-gray-900(for='remember_me') Remember me
+        a.text-sm.text-blue-600.font-medium(href='#' class='hover:text-blue-800') Forgot Password?
+      button.w-full.bg-blue-600.text-white.py-3.px-4.rounded-md.transition.duration-300.ease-in-out.font-semibold.text-lg(type='submit' class='hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2')
+        | Log In
+    // Message area for dynamic feedback
+    #messageArea.hidden.mt-4.p-3.rounded-md.text-sm.text-center
+    p.mt-8.text-center.text-gray-600.text-sm
+      | Don&apos;t have an account?
+      a.text-blue-600.font-medium(href='/signup' class='hover:text-blue-800') Sign Up
+
+  // Link to your external JavaScript file. This should be at the end of the body.
+  // If your layout.pug already has a block for scripts at the end of the body,
+  // you might put this inside that block. Otherwise, placing it here directly
+  // within block content will render it at the end of the content block.
+  script(src='script.js')

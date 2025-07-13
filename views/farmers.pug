@@ -4,15 +4,15 @@ block content
    link(rel='stylesheet' href='/styl/farmers.css')  
   .container
     h2 Farmer Records
-    form.mb-8(onsubmit='event.preventDefault(); addFarmer();')
+    form#addFarmerRequestForm(action='/addFarmer' method='post')
       label(for='farmer-name') Farmer Name:
-      input#farmer-name.w-full(type='text' placeholder="Enter farmer's name" required='')
+      input#farmer-name.w-full(type='text' name='farmerName' placeholder="Enter farmer's name")
       label(for='farmer-age') Age:
-      input#farmer-age.w-full(type='number' placeholder='Enter age' min='1' required='')
+      input#farmer-age.w-full(type='number' placeholder='Enter age' min='1' name='farmerAge')
       label(for='farmer-tel') Phone Number:
-      input#farmer-tel.w-full(type='text' placeholder='Enter phone number' required='')
+      input#farmer-tel.w-full(type='tel' placeholder='Enter phone number' name='farmerTel')
       label(for='farmer-address') Address:
-      input#farmer-address.w-full(type='text' placeholder='Enter address' required='')
+      input#farmer-address.w-full(type='text' placeholder='Enter address' name='farmerAddress')
       button.w-full(type='submit') Add Farmer
     #display-farmers.mt-6
-    script(src="/vanila-js/farmers.js")
+    //- script(src="/vanila-js/farmers.js")c

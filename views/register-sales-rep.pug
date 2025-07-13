@@ -1,92 +1,46 @@
-extends layout 
+extends layout
+
 block content
-  header
-    title Sales Representative Registration
-    link(rel='stylesheet' href='/styl/sales.css')
-  body
-    h1 Welcome to the Sales Representative Page
-    p
-      | Please fill out the form below to register a new sales representative for
-      |   Young4Chicks.
-    form#salesRepRegistrationForm
-      div
-        label(for="fullName") Full Name:
-        br
-        input#fullName(
-          required="" 
-          placeholder="Jane Doe" 
-          name="fullName" 
-          type="text"
-          )
-        br
-        br
-      div
-        label(for="repEmail") Email Address:
-        br
-        input#repEmail(
-          required="" 
-          placeholder="jane.doe@young4chicks.com" 
-          name="repEmail" 
-          type="email"
-          )
-        br
-        br
-      div
-        label(for="repPhone") Telephone Number:
-        br
-        input#repPhone(
-          required="" 
-          placeholder="+1234567890" 
-          name="repPhone" 
-          type="tel"
-          )
-        br
-        br
-      div
-        label(for="repAddress") Address:
-        br
-        textarea#repAddress(
-          required="" 
-          placeholder="456 Business Park, City, Country" 
-          rows="3" 
-          name="repAddress"
-          )
-        br
-        br
-      div
-        label(for="employeeId") Employee ID:
-        br
-        input#employeeId(
-          required="" 
-          placeholder="YC-REP-001" 
-          name="employeeId" 
-          type="text"
-          )
-        br
-        br
-      div
-        label(for="password") Password:
-        br
-        input#password(
-          required="" 
-          placeholder="Enter a strong password" 
-          name="password" 
-          type="password"
-          )
-        br
-        br
-      div
-        label(for="confirmPassword") Confirm Password:
-        br
-        input#confirmPassword(
-          required="" 
-          placeholder="Re-enter password" 
-          name="confirmPassword" 
-          type="password"
-          )
-        br
-        br
-      div
-        button(type="submit") Register Sales Representative
-    #displaySalesReps.mt-6
-    script(src="/vanila-js/sales.js")
+  .container.mt-5
+    h1.text-center.mb-4 Sales Representative Registration
+    p.text-center.mb-5
+      | Please fill out the form below to register a new sales representative for 
+      strong Young4Chicks.
+
+    form#salesRepRegistrationForm(method="POST" action="/register-sales" class="bg-white p-4 rounded-lg shadow-xl max-w-lg mx-auto")
+      .mb-3
+        label.form-label(for="fullName") Full Name:
+        input#fullName.form-control(type="text" name="fullName" placeholder="Jane Doe" required)
+
+      .mb-3
+        label.form-label(for="repEmail") Email Address:
+        input#repEmail.form-control(type="email" name="repEmail" placeholder="jane.doe@young4chicks.com" required)
+
+      .mb-3
+        label.form-label(for="repPhone") Telephone Number:
+        input#repPhone.form-control(type="tel" name="repPhone" placeholder="+1234567890" required)
+
+      .mb-3
+        label.form-label(for="repAddress") Address:
+        textarea#repAddress.form-control(name="repAddress" rows="3" placeholder="456 Business Park, City, Country" required)
+
+      .mb-3
+        label.form-label(for="employeeId") Employee ID:
+        input#employeeId.form-control(type="text" name="employeeId" placeholder="YC-REP-001" required)
+
+      .mb-3
+        label.form-label(for="password") Password:
+        input#password.form-control(type="password" name="password" placeholder="Enter a strong password" required)
+
+      .mb-3
+        label.form-label(for="confirmPassword") Confirm Password:
+        input#confirmPassword.form-control(type="password" name="confirmPassword" placeholder="Re-enter password" required)
+
+      button.btn.btn-primary.w-100.mt-3(type="submit") Register Sales Representative
+
+    #displaySalesReps.mt-5
+
+  // Include your JS file for interactivity
+  script(src="/vanila-js/sales.js")
+  // Include custom styles (placed in public/styl/sales.css)
+  link(rel="stylesheet" href="/styl/sales.css")
