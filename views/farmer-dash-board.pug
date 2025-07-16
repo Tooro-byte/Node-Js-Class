@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid
+      a.navbar-brand(href='#') Young4Chicks
+      button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarContent')
+        span.navbar-toggler-icon
+      #navbarContent.collapse.navbar-collapse
+        ul.navbar-nav.ms-auto
+          li.nav-item
+            a.nav-link(href='/logout') Logout
+
+  .dashboard-container
+    h1 Welcome, #{farmerName}
+    p Here is your personalized dashboard.
+
+    .actions
+      a.btn.btn-primary(href='/chick-request') Request New Chicks
+
+    hr
+
+    h2 Your Chick Requests
+
+    if requests && requests.length > 0
+      table.table.table-striped
+        thead
+          tr
+            th Request Date
+            th Type of Chicks
+            th Quantity
+            th Status
+        tbody
+          each req in requests
+            tr
+              td #{req.request_date}
+              td #{req.chick_type}
+              td #{req.num_chicks}
+              td #{req.status}
+    else
+      p.text-muted You haven't made any chick requests yet.

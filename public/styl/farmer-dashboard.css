@@ -1,0 +1,51 @@
+/* farmer-dashboard.css */
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding-top: 80px;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2c5282;
+  margin-bottom: 10px;
+}
+
+.actions {
+  margin: 20px 0;
+}
+
+.actions .btn-primary {
+  background-color: #2563eb;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.actions .btn-primary:hover {
+  background-color: #1e40af;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+table th {
+  background-color: #f0f4f8;
+  font-weight: 600;
+}

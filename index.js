@@ -2,17 +2,25 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const passport = require("passport");
+const expressSession = require("express-session")({
+  secret: "Tooro-byte",
+  resave: false,
+  saveUninitialized: false,
+});
 
 require("dotenv").config();
 
+// Import the User Model
+const User = require("./models/User");
 //1b: Importing Routes
 const studyRoutes = require("./routes/studyRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 const chicksRoutes = require("./routes/chicksRoutes");
 const farmersRoutes = require("./routes/farmersRoutes");
 const salesRepRoutes = require("./routes/salesRepRoutes");
-const loginInfoRoute = require("./routes/loginRoute");
-const signupInfoRoute = require("./routes/signupRoute");
+const authRoutes = require("./routes/authRoutes");
+const farmerDashBoard = require("./routes/farmer-dashRoute");
 
 // 2: Instantiations
 const app = express();
@@ -33,21 +41,25 @@ app.set("view engine", "pug"); // Setting pug as the view Engine
 app.use(express.static("views")); // Collect pug files from the views folder.
 
 //4a: Middleware
-app.use("/about", (req, res, next) => {
-  console.log("A new request received at " + Date.now());
-  next(); //Time logging for the about route
-});
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
+//Express Session Configurations
+app.use(expressSession);
+app.use(passport.initialize());
+app.use(passport.session());
 
+//Passport Configurations
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 //4b: Using Imported routes from the routes folder
 app.use("/study", studyRoutes);
 app.use("/", indexRoutes);
 app.use("/", chicksRoutes);
 app.use("/", farmersRoutes);
 app.use("/", salesRepRoutes);
-app.use("/", loginInfoRoute);
-app.use("/", signupInfoRoute);
+app.use("/", authRoutes);
+app.use("/", farmerDashBoard);
 
 //Handling Non -existing routes.
 app.use((req, res) => {

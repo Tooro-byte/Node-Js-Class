@@ -1,0 +1,52 @@
+/* chick-request.css */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding-top: 90px;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-weight: 600;
+  color: #2c5282;
+}
+
+label {
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  font-size: 1rem;
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4299e1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #2b6cb0;
+}

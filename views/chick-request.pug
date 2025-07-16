@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid
+      a.navbar-brand(href='#') Young4Chicks
+      button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav')
+        span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        ul.navbar-nav.ms-auto
+          li.nav-item
+            a.nav-link(href='/logout') Logout
+
+  main.container.mt-5
+    h2.text-center.mb-4 Chick Request Form
+    form#chickRequestForm(method="post", action="/submit-chick-request")
+      .mb-3
+        label(for="farmerName") Full Name
+        input.form-control(type="text", id="farmerName", name="farmerName", required)
+
+      .mb-3
+        label(for="farmerNIN") Farmer NIN Number
+        input.form-control(type="text", id="farmerNIN", name="farmerNIN", required)
+
+      .mb-3
+        label(for="farmerType") Farmer Type
+        select.form-select(id="farmerType", name="farmerType", required)
+          option(value='') -- Select --
+          option(value='starter') Starter
+          option(value='returning') Returning
+
+      .mb-3
+        label(for="chickType") Chick Type
+        select.form-select(id="chickType", name="chickType", required)
+          option(value='') -- Select --
+          option(value='broiler') Broiler
+          option(value='layer') Layer
+
+      .mb-3
+        label(for="numChicks") Number of Chicks
+        input.form-control(type="number", id="numChicks", name="numChicks", min="100", max="500", required)
+
+      .mb-3
+        label Total Price (UGX)
+        input.form-control(type="text", id="totalPrice", readonly)
+
+      .mb-3
+        label(for="requestDate") Preferred Pickup Date
+        input.form-control(type="date", id="requestDate", name="requestDate", required)
+
+      .mb-3
+        label(for="comments") Additional Comments
+        textarea.form-control(id="comments", name="comments", rows="3")
+
+      button.btn.btn-primary(type="submit") Submit Request
+
+  script(src="/js/chick-request.js")

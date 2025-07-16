@@ -1,0 +1,62 @@
+extends layout
+
+block content
+  link(rel="stylesheet", href="/styl/chicks.css")
+
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid
+      a.navbar-brand(href="#") Young4Chicks
+      button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item
+            a.nav-link.active(href="#", aria-current="page") Home
+          li.nav-item
+            a.nav-link(href="#") About Us
+          li.nav-item
+            a.nav-link.disabled(href="#", tabindex='-1', aria-disabled='true') Disabled
+        form.d-flex
+          input.form-control.me-2(type='search', placeholder='Search', aria-label='Search')
+          button.btn.btn-outline-success(type='submit') Search
+
+  main
+    h1 Welcome To Young4Chicks
+    p Please fill the form below to submit your chick request.
+
+    form#chickRequestForm(action="/addChicks", method="post")
+      div
+        label(for="name") Full Name:
+        input#name(type="text", name="fullname", placeholder="John Doe", required)
+
+      div
+        label(for="email") Email Address:
+        input#email(type="email", name="email", placeholder="john.doe@example.com", required)
+
+      div
+        label(for="address") Address:
+        textarea#address(name="address", rows="3", placeholder="123 Farm Road, Rural City, Country", required)
+
+      div
+        label(for="telephone") Telephone Number:
+        input#telephone(type="tel", name="telephone", placeholder="+1234567890", required)
+
+      div
+        label(for="num_chicks") Number of Chicks (300-500):
+        input#num_chicks(type="number", name="num_chicks", min="300", max="500", value="300", required)
+        #totalPriceDisplay(style="margin-top: 5px; font-weight: bold;")
+
+      div
+        label(for="nin_number") NIN Number:
+        input#nin_number(type="text", name="nin_number", placeholder="e.g., CM1234567890AB", required)
+
+      div
+        label(for="request_date") Preferred Date:
+        input#request_date(type="date", name="request_date", required)
+
+      div
+        label(for="comments") Additional Comments:
+        textarea#comments(name="comments", rows="4", placeholder="Any specific requests or details?")
+
+      div
+        button(type="submit") Submit Chick Request

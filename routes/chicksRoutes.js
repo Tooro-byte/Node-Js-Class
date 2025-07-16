@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const chickStock = require("../models/ChicksModel");
+const Stock = require("../models/chickStock");
 
 router.get("/addChicks", (req, res) => {
   res.render("chicks");
@@ -13,13 +14,26 @@ router.post("/addChicks", async (req, res) => {
     console.log(req.body);
     const newStock = new chickStock(req.body);
     await newStock.save();
-  } catch (error){
+  } catch (error) {
     console.error(error);
-    res.status(400).render('chicks');
+    res.status(400).render("chicks");
   }
-  // finally{
+});
 
-  // }
+router.get("/addStock", (req, res) => {
+  res.render("chickStock");
+});
+// A post route to send Data to the Data Base.
+
+router.post("/addStock", async (req, res) => {
+  try {
+    console.log(req.body);
+    const newRequest = new Stock(req.body);
+    await newRequest.save();
+  } catch (error) {
+    console.error(error);
+    res.status(400).render("chickStock");
+  }
 });
 
 module.exports = router;
