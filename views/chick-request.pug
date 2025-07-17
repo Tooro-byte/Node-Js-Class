@@ -13,32 +13,32 @@ block content
 
   main.container.mt-5
     h2.text-center.mb-4 Chick Request Form
-    form#chickRequestForm(method="post", action="/submit-chick-request")
+    form#chickRequestForm(action="/chickRequest", method="post")
       .mb-3
         label(for="farmerName") Full Name
         input.form-control(type="text", id="farmerName", name="farmerName", required)
 
       .mb-3
         label(for="farmerNIN") Farmer NIN Number
-        input.form-control(type="text", id="farmerNIN", name="farmerNIN", required)
+        input.form-control(type="text", id="farmerNIN", name="farmerNIN",)
 
       .mb-3
         label(for="farmerType") Farmer Type
-        select.form-select(id="farmerType", name="farmerType", required)
+        select.form-select(id="farmerType", name="farmerType",)
           option(value='') -- Select --
           option(value='starter') Starter
           option(value='returning') Returning
 
       .mb-3
         label(for="chickType") Chick Type
-        select.form-select(id="chickType", name="chickType", required)
+        select.form-select(id="chickType", name="chickType",)
           option(value='') -- Select --
           option(value='broiler') Broiler
           option(value='layer') Layer
 
       .mb-3
         label(for="numChicks") Number of Chicks
-        input.form-control(type="number", id="numChicks", name="numChicks", min="100", max="500", required)
+        input.form-control(type="number", id="numChicks", name="numChicks", min="100", max="500",)
 
       .mb-3
         label Total Price (UGX)
@@ -46,7 +46,7 @@ block content
 
       .mb-3
         label(for="requestDate") Preferred Pickup Date
-        input.form-control(type="date", id="requestDate", name="requestDate", required)
+        input.form-control(type="date", id="requestDate", name="requestDate",)
 
       .mb-3
         label(for="comments") Additional Comments
@@ -54,4 +54,4 @@ block content
 
       button.btn.btn-primary(type="submit") Submit Request
 
-  script(src="/js/chick-request.js")
+  script(src="/vanila-js/chick-request.js")
