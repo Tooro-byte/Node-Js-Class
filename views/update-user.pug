@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8.col-lg-6
+        .card.shadow-lg.p-4
+          h2.text-center.mb-4.text-primary Update Account
+          form#signupForm(method='POST' action='/updateuser?id='+ user._id)
+            .mb-3
+              label.form-label(for='fullName') Full Name
+              input#fullName.form-control(type='text' name='fullname' value=user.fullname)
+            .mb-3
+              label.form-label(for='email') Email Address
+              input#email.form-control(type='email' name='email' value=user.email)
+            //- .mb-3 
+            //-   |Gender 
+            //-   label.form-label(for='') Male 
+            //-   input#email.form-control(type='radio' name='gender' value="male" checked=user.gender==="male")
+            //-   label.form-label(for='') Female 
+            //-   input#email.form-control(type='radio' name='gender' value="female" checked=user.gender==="female")
+            .mb-3
+              label.form-label(for='phone') Phone Number
+              input#phone.form-control(type='tel' name='phone' value=user.phone) 
+            .mb-3 
+              label.form-label(for='role') Role
+              select#role(name="role")
+                option(value="farmer" selected=user.role==='farmer') Farmer 
+                option(value="salesRep" selected=user.role==='salesRep') Sales Representative 
+                option(value="brooderManager" selected=user.role==='brooderManager') Brooder Manager
+            button.btn.btn-primary.w-100(type='submit') Update
+  link(rel='stylesheet' href='/styl/signup.css')

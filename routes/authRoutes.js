@@ -31,9 +31,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.post(
-  "/login",
-  passport.authenticate("local", { failureRedirect: "/login" }),
+router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }),
   (req, res) => {
     req.session.user = req.user;
     if (req.user.role == "farmer") {
