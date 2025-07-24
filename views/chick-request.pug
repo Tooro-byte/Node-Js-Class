@@ -1,5 +1,4 @@
 extends layout
-
 block content
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container-fluid
@@ -15,37 +14,40 @@ block content
     h2.text-center.mb-4 Chick Request Form
     form#chickRequestForm(action="/chickRequest", method="post")
       .mb-3
-        label(for="farmerName") Full Name
-        input.form-control(type="text", id="farmerName", name="farmerName", required)
-
-      .mb-3
-        label(for="farmerNIN") Farmer NIN Number
-        input.form-control(type="text", id="farmerNIN", name="farmerNIN",)
-
-      .mb-3
         label(for="farmerType") Farmer Type
-        select.form-select(id="farmerType", name="farmerType",)
-          option(value='') -- Select --
-          option(value='starter') Starter
-          option(value='returning') Returning
-
+        .form-check 
+          input.form-check-input#starter(type="radio" name="farmerType", value="starter"
+          checked=(isStarter ? "checked" : false)
+          )
+          label.form-check-label(for="starter") Starter Farmer (Max 100 Chicks)
+        .form-check 
+          input.form-check-input#returning(type="radio" name="farmerType", value="returning"
+          checked=(isStarter ? false : "checked")
+          )
+          label.form-check-label(for="returning") Retuning Farmer (Max 500 Chicks)
       .mb-3
         label(for="chickType") Chick Type
-        select.form-select(id="chickType", name="chickType",)
+        select.form-select(id="chickType", name="chickType")
           option(value='') -- Select --
           option(value='broiler') Broiler
           option(value='layer') Layer
 
       .mb-3
         label(for="numChicks") Number of Chicks
-        input.form-control(type="number", id="numChicks", name="numChicks", min="100", max="500",)
-
+        input.form-control(type="number", id="numChicks", name="numChicks", min="1", 
+        max=(isStarter ? 100 : 500)
+        )
+        small.form-text.text.muted 
+          | Maximum: #{isStarter ? "100" : "500"} Chicks
+      .mb-3
+        label Unit Price
+        input.form-control(type="number", id="unitPrice", readonly name="unitPrice" value=1650)
       .mb-3
         label Total Price (UGX)
-        input.form-control(type="text", id="totalPrice", readonly)
+        input.form-control(type="text", id="totalPrice", readonly  name="totalCost")
 
       .mb-3
-        label(for="requestDate") Preferred Pickup Date
+        label(for="requestDate") Date Requested
         input.form-control(type="date", id="requestDate", name="requestDate",)
 
       .mb-3

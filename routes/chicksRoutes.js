@@ -1,26 +1,11 @@
 const express = require("express");
 const router = express.Router();
-
-const chickStock = require("../models/ChicksModel");
+const {
+  ensureAuthenticated,
+  ensureFarmer,
+} = require("../middleware/authMiddleware");
 const Stock = require("../models/chickStock");
 const requestYourChicks = require("../models/chickRequestModel");
-const AddStock = require("../models/addStockModel");
-
-router.get("/addChicks", (req, res) => {
-  res.render("chicks");
-});
-// A post route to send Data to the Data Base.
-
-router.post("/addChicks", async (req, res) => {
-  try {
-    console.log(req.body);
-    const newStock = new chickStock(req.body);
-    await newStock.save();
-  } catch (error) {
-    console.error(error);
-    res.status(400).render("chicks");
-  }
-});
 
 router.get("/addstock", (req, res) => {
   res.render("chickStock");
@@ -38,16 +23,50 @@ router.post("/addstock", async (req, res) => {
   }
 });
 // Chick Request Route
-router.get("/chickRequest", (req, res) => {
-  res.render("chick-request");
-});
+router.get(
+  "/chickRequest",
+  ensureAuthenticated,
+  ensureFarmer,
+  async (req, res) => {
+    try {
+      const requests = await requestYourChicks.find({ //  returns requests from the db for a particular user
+        user: req.session.user._id, //captures the currently login user
+      });
+      const isStarter = requests.length === 0;
+      console.log("These are my requests so far", requests);
+      res.render("chick-request", { isStarter });
+    } catch (error) {
+      console.error(error.message);
+      res.redirect("/farmerDashBoard");
+    }
+  }
+);
 
 router.post("/chickRequest", async (req, res) => {
   try {
-    const newRequest = new requestYourChicks(req.body);
+    const {
+      farmerType,
+      chickType,
+      numChicks,
+      unitPrice,
+      totalCost,
+      requestDate,
+      comments,
+    } = req.body;
+    const userId = req.session.user._id;
+    const newRequest = new requestYourChicks({
+      farmerType,
+      chickType,
+      numChicks,
+      unitPrice,
+      totalCost,
+      requestDate,
+      comments,
+      user: userId,
+    });
     await newRequest.save();
   } catch (error) {
-    res.status(400).render("chick-request");
+    res.status(400).render("chick-request"); //redirect to feeds request route.
   }
 });
 

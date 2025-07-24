@@ -1,0 +1,141 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Admin Dashboard - Young For Chicks
+    link(rel='stylesheet' href='/styl/common.css')
+  
+  body
+    //- The Navigation Bar
+    header
+      .container
+        .logo
+          img(src="assets/Gemini_Generated_Image_oje925oje925oje9.png" alt="Chick Farm App Logo")
+          h1 Young For Chicks
+        nav
+          ul
+            li
+              a(href="index.html") Home
+            li
+              a(href="products.html") Products
+            li
+              a(href="#" id="adminLogoutBtn" class="btn secondary") Logout
+    //- End of Header
+
+    .dashboard-wrapper.container
+      aside.sidebar
+        .sidebar-header
+          h2 Admin Navigation
+        nav.sidebar-nav
+          ul
+            li
+              a(href="#admin-overview" class="sidebar-active") Overview
+            li
+              a(href="#manage-requests") Manage Requests
+            li
+              a(href="#manage-payments") Manage Payments
+            li
+              a(href="#manage-products") Manage Products
+            li
+              a(href="#" id="sidebarAdminLogoutBtn") Logout
+
+      main.dashboard-content
+        section#admin-overview.dashboard-section.active
+          h2 Welcome, 
+            span#adminUserName Admin
+            | !
+          p This is your central hub for managing the Young For Chicks platform.
+
+          .stats-grid
+            .stat-card
+              h3 Total Pending Requests
+              p#totalPendingRequests #{pendingRequests}
+            .stat-card
+              h3 Total Approved  Requests
+              p#totalCompletedRequests #{approvedRequests}
+            .stat-card
+              h3 Total Dispatched Requests
+              p#totalCompletedRequests #{dispatchedRequests}
+            .stat-card
+              h3 Total Farmers
+              p#totalFarmers #{totalNumOfFarmers}
+
+        section#manage-requests.dashboard-section
+          h2 Manage Farmer Requests
+          .table-container
+            table.data-table
+              thead
+                tr
+                  th Date
+                  th Request ID
+                  th Farmer Name
+                  th Chick Type
+                  th Quantity
+                  th Delivery Date
+                  th Status
+                  th Actions
+              tbody#adminRequestsTableBody
+
+        section#manage-payments.dashboard-section
+          h2 Manage Farmer Payments
+          .table-container
+            table.data-table
+              thead
+                tr
+                  th Date
+                  th Payment ID
+                  th Request ID
+                  th Farmer Name
+                  th Amount
+                  th Status
+                  th Actions
+              tbody#adminPaymentsTableBody
+
+        section#manage-products.dashboard-section
+          h2 Manage Products
+          .product-management
+            h3 Add New Product
+            form#addProductForm
+              .form-group
+                label(for="newProductName") Product Name:
+                input(type="text" id="newProductName" required)
+
+              //- Farmer Request Form
+
+              .form-group
+                label(for="newProductCategory") Category:
+                select(id="newProductCategory" required)
+                  option(value="") Select Category
+                  option(value="chick-types") Chick Types
+                  option(value="feeds") Feeds
+                  option(value="vaccines") Vaccines & Supplements
+
+              //- Add new products for Customers
+              .form-group
+                label(for="newProductShortDesc") Short Description:
+                input(type="text" id="newProductShortDesc" required)
+              
+              .form-group
+                label(for="newProductFullDesc") Full Description:
+                textarea(id="newProductFullDesc" rows="3" required)
+              
+              .form-group
+                label(for="newProductPrice") Price:
+                input(type="text" id="newProductPrice" required)
+              
+              .form-group
+                label(for="newProductImage") Image URL (or path in assets/):
+                input(type="text" id="newProductImage" value="assets/placeholder.jpg" required)
+              
+              button(type="submit" class="btn primary") Add Product
+              #addProductMessage.message-area
+
+            h3 Existing Products
+            #existingProductsList
+
+    footer
+      .container
+        p &copy; 2025 Young For Chicks Inc. All rights reserved.
+
+    script(src="Js/main.js" defer)

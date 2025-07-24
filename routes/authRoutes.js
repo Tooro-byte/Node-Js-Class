@@ -31,7 +31,9 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }),
+router.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/login" }),
   (req, res) => {
     req.session.user = req.user;
     if (req.user.role == "farmer") {
@@ -39,24 +41,25 @@ router.post("/login", passport.authenticate("local", { failureRedirect: "/login"
     } else if (req.user.role == "salesRep") {
       res.send("This is the Sale Rep dash board");
     } else if (req.user.role == "brooderManager") {
-      res.send("This is the Brooder Manager dash board");
+      res.redirect("/managerDashBoard");
     } else {
       res.send("You do not have a role in the System");
     }
   }
 );
 
+// Manager's route
+
 
 // logout button
-
-router.get("/logout", (req, res)=>{
-     if(req.session){
-      req.session.destroy((error)=>{
-        if(error){
-          return res.status(500).send("Error Logging out!")
-        }
-        res.redirect("/")
-      })
-     }
-})
+router.get("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((error) => {
+      if (error) {
+        return res.status(500).send("Error Logging out!");
+      }
+      res.redirect("/");
+    });
+  }
+});
 module.exports = router;

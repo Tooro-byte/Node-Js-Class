@@ -22,6 +22,7 @@ const farmersRoutes = require("./routes/farmersRoutes");
 const salesRepRoutes = require("./routes/salesRepRoutes");
 const authRoutes = require("./routes/authRoutes");
 const farmerDashBoard = require("./routes/farmer-dashRoute");
+const dashBoards = require("./routes/dashBoardRoutes");
 
 // 2: Instantiations
 const app = express();
@@ -32,19 +33,21 @@ app.locals.moment = moment;
 mongoose.connect(process.env.DATABASE);
 mongoose.connection
   .once("open", () => {
-    console.log(`Mongoose Connection Open on ${port} Enjoy Coding`);
+    console.log(`Secure Connection has been established for Mongoose`);
   })
-  .on("error", (error) => {
-    console.error(`Connection error: ${error.message}`);
+  .on("error", () => {
+    console.error(error.message);
   });
-
-app.set("view engine", "pug"); // Setting pug as the view Engine
+//Setting up a templating Engine!
+//Setting pug as the view Engine!
+app.set("view engine", "pug");
 // app.set("views", path.join(__dirname, "views")); // Specify a folder containing frontend files
 app.use(express.static("views")); // Collect pug files from the views folder.
 
 //4a: Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
+
 //Express Session Configurations
 app.use(expressSession);
 app.use(passport.initialize());
@@ -62,6 +65,7 @@ app.use("/", farmersRoutes);
 app.use("/", salesRepRoutes);
 app.use("/", authRoutes);
 app.use("/", farmerDashBoard);
+app.use("/", dashBoards);
 
 //Handling Non -existing routes.
 app.use((req, res) => {
@@ -71,5 +75,5 @@ app.use((req, res) => {
 //6: Bootstrapping the Server
 //Always put this line of code at the enf of the index.js file.
 app.listen(port, () => {
-  console.log(`Server has started running on Port ${port}`);
+  console.log(`Server has started running on Port ${port} Feel Good.`);
 });
